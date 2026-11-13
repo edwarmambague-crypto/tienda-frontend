@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Tienda en Línea</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <h1> Mi Tienda</h1>
+
+        <div class="header-actions">
+            <!-- Consultar un producto por id -->
+            <form id="searchForm" class="search">
+                <input type="number" id="searchId" min="1" placeholder="Buscar por id" required>
+                <button type="submit" class="btn btn-secondary">Buscar</button>
+                <button type="button" id="btnShowAll" class="btn btn-ghost">Ver todos</button>
+            </form>
+
+            <button id="btnNew" class="btn btn-primary">+ Nuevo producto</button>
+        </div>
+    </header>
+
+    <main>
+        <p id="status" class="status" hidden></p>
+        <section id="productList" class="grid"></section>
+    </main>
+
+    <!-- Ventana para crear / editar -->
+    <dialog id="productDialog">
+        <form id="productForm" novalidate>
+            <h2 id="dialogTitle">Nuevo producto</h2>
+            <input type="hidden" id="productId">
+
+            <label>Nombre *
+                <input type="text" id="name" placeholder="Camiseta básica">
+            </label>
+
+            <label>Descripción
+                <textarea id="description" rows="3" placeholder="Opcional (máx. 500 caracteres)"></textarea>
+            </label>
+
+            <div class="row">
+                <label>Precio *
+                    <input type="number" id="price" step="0.01" min="0" placeholder="49900">
+                </label>
+                <label>Stock *
+                    <input type="number" id="stock" step="1" min="0" placeholder="20">
+                </label>
+            </div>
+
+            <label>Categoría *
+                <input type="text" id="category" placeholder="Ropa">
+            </label>
+
+            <label>URL de la imagen
+                <input type="text" id="imageUrl" placeholder="https://... (opcional)">
+            </label>
+
+            <ul id="formErrors" class="form-errors" hidden></ul>
+
+            <div class="dialog-actions">
+                <button type="button" id="btnCancel" class="btn btn-ghost">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </form>
+    </dialog>
+
+    <div id="toast" class="toast" hidden></div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+
+</html>
